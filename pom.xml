@@ -109,7 +109,7 @@
     <build>
         <finalName>ROOT</finalName>
   </build>
-
+<!--
   <profiles>
     <profile>
       <id>openshift</id>
@@ -171,6 +171,6 @@
       </build>
     </profile>
 
-  </profiles>
+  </profiles>-->
 
 </project>
