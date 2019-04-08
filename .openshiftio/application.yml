@@ -32,10 +32,10 @@ parameters:
   value: target
   required: false
 - name: SSO_AUTH_SERVER_URL
-  description: "SSO server URL. oc get route secure-sso -o jsonpath='{\"https://\"}{.spec.host}{\"/auth\n\"}'"
+  description: "he URL for the SSO server. oc get route secure-sso -o jsonpath='{\"https://\"}{.spec.host}{\"/auth\n\"}' .  This is the URL through which the user will be redirected when a login or token is required by the application."
   displayName: SSO Server URL
   value: "https://secure-sso-sso.127.0.0.1.nip.io/auth"
-  required: false
+  required: true
 objects:
 - apiVersion: v1
   kind: ImageStream
@@ -87,7 +87,7 @@ objects:
         - name: ARTIFACT_DIR
           value: "${ARTIFACT_DIR}"
         - name: SSO_AUTH_SERVER_URL
-          value: ${SSO_AUTH_SERVER_URL}"
+          value: ${SSO_AUTH_SERVER_URL}
       type: Source
     triggers:
     - github:
