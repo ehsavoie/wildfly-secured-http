@@ -38,6 +38,7 @@
         <version.javax.json>1.0.4</version.javax.json>
         <version.server.bom>16.0.0.Final</version.server.bom>
         <SSO_AUTH_SERVER_URL>${env.SSO_AUTH_SERVER_URL}</SSO_AUTH_SERVER_URL>
+        <SSO_INTERNAL_SERVER_URL>${env.SSO_INTERNAL_SERVER_URL}</SSO_INTERNAL_SERVER_URL>
     </properties>
 
     <dependencyManagement>

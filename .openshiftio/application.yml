@@ -34,7 +34,12 @@ parameters:
 - name: SSO_AUTH_SERVER_URL
   description: "The URL for the SSO server. oc get route secure-sso -o jsonpath='{\"https://\"}{.spec.host}{\"/auth\n\"}'.  This is the URL through which the user will be redirected when a login or token is required by the application."
   displayName: SSO Server URL
-  #value: https://secure-sso-${MY_POD_NAMESPACE}.127.0.0.1.nip.io/auth
+  value: https://secure-sso-evanescent-camp.192.168.42.21.nip.io/auth
+  required: true
+  - name: SSO_INTERNAL_SERVER_URL
+  description: "The internal URL for the SSO server. oc get route secure-sso -o jsonpath='{\"https://\"}{.spec.host}{\"/auth\n\"}'.  This is the URL through which the user will be redirected when a login or token is required by the application."
+  displayName: SSO Internal URL
+  value: https://secure-sso-${MY_POD_NAMESPACE}.svc/auth
   required: true
 objects:
 - apiVersion: v1
