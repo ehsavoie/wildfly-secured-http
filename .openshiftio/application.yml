@@ -34,7 +34,6 @@ parameters:
 - name: SSO_AUTH_SERVER_URL
   description: "The URL for the SSO server. oc get route secure-sso -o jsonpath='{\"https://\"}{.spec.host}{\"/auth\n\"}'.  This is the URL through which the user will be redirected when a login or token is required by the application."
   displayName: SSO Server URL
-  value: https://secure-sso-$MY_POD_NAMESPACE.192.168.42.21.nip.io/auth
   required: true
 objects:
 - apiVersion: v1
@@ -82,11 +81,6 @@ objects:
           name: runtime-secured-wildfly-http:latest
         incremental: true
         env:
-        - name: MY_POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.namespace
         - name: MAVEN_ARGS_APPEND
           value: "-pl ${SOURCE_REPOSITORY_DIR}"
         - name: ARTIFACT_DIR
@@ -139,11 +133,6 @@ objects:
       spec:
         containers:
         - env:
-          - name: MY_POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
           - name: SSO_AUTH_SERVER_URL
             value: ${SSO_AUTH_SERVER_URL}
           - name: REALM
