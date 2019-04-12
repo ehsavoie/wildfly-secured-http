@@ -98,6 +98,8 @@ objects:
           value: "${ARTIFACT_DIR}"
         - name: SSO_AUTH_SERVER_URL
           value: ${SSO_AUTH_SERVER_URL}
+        - name: SSO_INTERNAL_SERVER_URL
+          value: ${SSO_INTERNAL_SERVER_URL}
       type: Source
     triggers:
     - github:
@@ -146,6 +148,8 @@ objects:
         - env:
           - name: SSO_AUTH_SERVER_URL
             value: ${SSO_AUTH_SERVER_URL}
+          - name: SSO_INTERNAL_SERVER_URL
+            value: ${SSO_INTERNAL_SERVER_URL}
           - name: REALM
             value: master
           - name: REALM_PUBLIC_KEY
