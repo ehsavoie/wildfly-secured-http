@@ -11,7 +11,7 @@
     <div class="container">
 
       <div>
-        <h1>Secure HTTP API - Thorntail</h1>
+        <h1>Secure HTTP API - WildFly</h1>
         <p class="lead">The mission expands on the REST API Level 0 Booster by securing a REST endpoint using <a href="https://access.redhat.com/products/red-hat-single-sign-on">Red Hat SSO</a>. Red Hat SSO implements the OAuth 2.0 specification and uses it to issue access tokens to provide clients with various access rights to secured resources. Securing an application with SSO enables you to add security to your applications while centralizing the security configuration.
         </p>
 
@@ -51,8 +51,20 @@
             crossorigin="anonymous"></script>
 
     <script>
+        var authUrl = String('https://' + window.location.host.replace('secured-wildfly-http', 'secure-sso') + '/auth');
+        console.log("Auth URL " + authUrl);
+        var config = {
+            "realm": "master",
+            "auth-server-url" : authUrl,
+            "no-check-certificate": true,
+            "clientId" : "demoapp",
+            "enable-cors": true,
+            "credentials": {
+              "secret": "1daa57a2-b60e-468b-a3ac-25bd2dc2eadc"
+            }
+          };
         // configure the SSO object
-        var keycloak = Keycloak('/kc.json');
+        var keycloak = Keycloak(config);
 
         function initSSO () {
           keycloak.init().success(function () {
